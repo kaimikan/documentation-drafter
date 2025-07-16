@@ -1,0 +1,74 @@
+[
+  {
+    "id": "api-reference",
+    "displayName": "API Reference",
+    "description": "Generates detailed documentation for a single API endpoint, aimed at developers.",
+    "promptTemplate": "Act as a senior technical writer. Create API reference documentation for the '{feature_name}' endpoint. The target audience is {audience}. The documentation should be {length}, written in a {tone} tone, and formatted in {format}.\n\n### Core Details:\n{context}\n\n### Required Sections:\n- **Endpoint Purpose:** A clear, one-sentence summary.\n- **HTTP Method & URL:** The full method and request path.\n- **Request Parameters/Body:** Detailed breakdown of all fields, including data types and whether they are required.\n- **Success Response (200 OK):** Structure of the response body with field explanations.\n- **Error Responses:** Examples of potential errors (e.g., 400, 404, 500) and what they mean.\n- **Code Example:** A complete request example in a common language like cURL or JavaScript.",
+    "contextFields": [
+      {
+        "name": "feature_name",
+        "label": "Endpoint Name",
+        "type": "text",
+        "placeholder": "e.g., User Authentication"
+      },
+      {
+        "name": "context",
+        "label": "Key Information & Details",
+        "type": "textarea",
+        "placeholder": "Provide all relevant details here:\n- URL: /api/v1/login\n- Method: POST\n- Request Body JSON: { \"email\": \"...\", \"password\": \"...\" }\n- Success Response JSON: { \"token\": \"...\" }"
+      }
+    ]
+  },
+  {
+    "id": "user-guide",
+    "displayName": "User Guide",
+    "description": "Creates a step-by-step guide for a non-technical user to accomplish a task with a feature.",
+    "promptTemplate": "Act as a helpful product expert. Write a user guide for the '{feature_name}' feature. The target audience is {audience}. The guide should be {length}, written in a {tone} tone, and formatted in {format}.\n\n### User Goal:\n{user_goal}\n\n### Key Steps & Information:\n{context}\n\n### Instructions:\n- Start with a brief, simple explanation of what the feature does.\n- Provide clear, numbered, step-by-step instructions.\n- Avoid jargon. Assume the user has no prior knowledge of the system.\n- End with a troubleshooting tip or a 'What's Next?' section.",
+    "contextFields": [
+      {
+        "name": "feature_name",
+        "label": "Feature Name",
+        "type": "text",
+        "placeholder": "e.g., Uploading a Profile Picture"
+      },
+      {
+        "name": "user_goal",
+        "label": "What is the user trying to achieve?",
+        "type": "text",
+        "placeholder": "e.g., To add a personal photo to their account."
+      },
+      {
+        "name": "context",
+        "label": "Key Steps or Information to Include",
+        "type": "textarea",
+        "placeholder": "Provide the core steps or concepts to cover:\n1. Navigate to the Profile page.\n2. Click the 'Edit' button on the avatar.\n3. Select a JPG or PNG file under 5MB.\n4. Crop the image.\n5. Click 'Save'."
+      }
+    ]
+  },
+  {
+    "id": "test-plan",
+    "displayName": "Test Plan",
+    "description": "Outlines a testing strategy for a new feature, aimed at QA engineers and developers.",
+    "promptTemplate": "Act as a detail-oriented QA Lead. Create a comprehensive test plan for the '{feature_name}' feature. The target audience is {audience}. The plan should be {length}, written in a {tone} tone, and formatted for clarity in {format}.\n\n### Feature Overview:\n{feature_overview}\n\n### Test Cases to Cover:\n{context}\n\n### Structure Requirements:\n- **Objective:** What this test plan aims to verify.\n- **Scope:** Clearly define what is in-scope and out-of-scope for testing.\n- **Test Cases:** A list of test cases including:\n  - Test Case ID\n  - Description\n  - Steps to Reproduce\n  - Expected Result\n- **Test Environment:** Specify required browser, OS, or device.",
+    "contextFields": [
+      {
+        "name": "feature_name",
+        "label": "Feature Name",
+        "type": "text",
+        "placeholder": "e.g., Shopping Cart Checkout"
+      },
+      {
+        "name": "feature_overview",
+        "label": "Brief Feature Overview",
+        "type": "textarea",
+        "placeholder": "Describe what the feature does, its requirements, and any dependencies."
+      },
+      {
+        "name": "context",
+        "label": "List of Scenarios to Test",
+        "type": "textarea",
+        "placeholder": "List the test scenarios to be generated:\n- Add item to cart\n- Remove item from cart\n- Apply discount code\n- Proceed with invalid credit card\n- Successful checkout"
+      }
+    ]
+  }
+]

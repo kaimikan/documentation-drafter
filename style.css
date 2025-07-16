@@ -1,0 +1,122 @@
+:root {
+  --bg-color: #121212;
+  --card-bg-color: #1e1e1e;
+  --primary-color: #3399ff;
+  --text-color: #e0e0e0;
+  --border-color: #444;
+  --label-color: #aaa;
+  --input-bg-color: #2c2c2c;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: var(--card-bg-color);
+  padding: 20px 40px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+h2 {
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 5px;
+  margin-top: 30px;
+  color: var(--text-color);
+}
+
+p {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--label-color);
+}
+
+.section {
+  margin-bottom: 25px;
+}
+
+.description {
+  font-size: 0.9em;
+  color: var(--label-color);
+  text-align: left;
+  margin-top: 8px;
+  padding-left: 5px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: var(--label-color);
+}
+
+input[type="text"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  background-color: var(--input-bg-color);
+  color: var(--text-color);
+}
+
+textarea {
+  resize: vertical;
+}
+
+#context-container div {
+  margin-bottom: 15px;
+}
+
+.parameters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+button {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #0077e6;
+}
+
+#final-prompt {
+  background-color: #252525;
+  font-family: "Courier New", Courier, monospace;
+}
+
+#copy-feedback {
+  margin-left: 15px;
+  color: var(--primary-color);
+  font-weight: bold;
+}
