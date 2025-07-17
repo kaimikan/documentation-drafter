@@ -120,3 +120,74 @@ button:hover {
   color: var(--primary-color);
   font-weight: bold;
 }
+
+/* Стил за контейнера на етикета и иконата */
+.label-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Разстояние между етикета и иконата */
+}
+
+/* Контейнер за иконата и подсказката */
+.tooltip-container {
+  position: relative;
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.helper-icon {
+  font-size: 1rem;
+  color: var(--primary-color);
+}
+
+/* Стил за текста на подсказката (tooltip) */
+.tooltip-text {
+  visibility: hidden;
+  width: 280px;
+  background-color: #333;
+  color: #fff;
+  text-align: left;
+  white-space: pre-wrap; /* Позволява пренасяне на текст */
+  border-radius: 6px;
+  padding: 8px 12px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -140px; /* Половината от ширината за центриране */
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-weight: normal;
+  font-size: 0.85em;
+  line-height: 1.4;
+  pointer-events: none; /* Не пречи на клика върху иконата */
+}
+
+/* Малка стрелка под подсказката */
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+/* Показване на подсказката при hover */
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Стил за обратна връзка при копиране */
+.tooltip-container.copied .tooltip-text {
+  background-color: #28a745; /* Зелен цвят за успех */
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip-container.copied .tooltip-text::after {
+  border-top-color: #28a745;
+}

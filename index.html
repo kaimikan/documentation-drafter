@@ -1,65 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bg">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Documentation Drafter</title>
+    <title>Създател на Документация</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
   </head>
   <body>
     <div class="container">
-      <h1>Documentation Drafter</h1>
+      <h1>Създател на Документация</h1>
       <p>
-        Build the perfect prompt for generating project documentation with an
-        LLM.
+        Изградете перфектния промпт за генериране на проектна документация с AI.
       </p>
 
       <div class="section">
-        <h2>1. Select Documentation Type</h2>
+        <h2>1. Изберете тип документация</h2>
         <select id="preset-select">
-          <option value="">-- Choose a preset --</option>
+          <option value="">-- Изберете шаблон --</option>
         </select>
         <p id="preset-description" class="description"></p>
       </div>
 
       <div class="section">
-        <h2>2. Provide Context</h2>
+        <h2>2. Въведете контекст</h2>
         <div id="context-container"></div>
       </div>
 
       <div class="section">
-        <h2>3. Configure Parameters</h2>
+        <h2>3. Конфигурирайте параметри</h2>
         <div class="parameters-grid">
           <div class="param-item">
-            <label for="audience-select">Target Audience</label>
+            <label for="audience-select">Целева аудитория</label>
             <select id="audience-select">
-              <option>Developers</option>
-              <option>End Users</option>
-              <option>Project Managers</option>
-              <option>QA Engineers</option>
-              <option>Executives</option>
+              <option>Програмисти</option>
+              <option>Крайни потребители</option>
+              <option>Проектни мениджъри</option>
+              <option>QA инженери</option>
+              <option>Ръководители</option>
             </select>
           </div>
           <div class="param-item">
-            <label for="tone-select">Tone</label>
+            <label for="tone-select">Тон</label>
             <select id="tone-select">
-              <option>Technical</option>
-              <option>Formal</option>
-              <option>Casual</option>
-              <option>Academic</option>
+              <option>Технически</option>
+              <option>Официален</option>
+              <option>Неформален</option>
+              <option>Академичен</option>
             </select>
           </div>
           <div class="param-item">
-            <label for="length-select">Length</label>
+            <label for="length-select">Дължина</label>
             <select id="length-select">
-              <option>Concise</option>
-              <option selected>Standard</option>
-              <option>Detailed</option>
+              <option>Кратка</option>
+              <option selected>Стандартна</option>
+              <option>Детайлна</option>
             </select>
           </div>
           <div class="param-item">
-            <label for="format-select">Output Format</label>
+            <label for="format-select">Изходен формат</label>
             <select id="format-select">
               <option>Markdown</option>
               <option>Plain Text</option>
@@ -67,24 +66,24 @@
             </select>
           </div>
           <div class="param-item">
-            <label for="language-select">Language</label>
+            <label for="language-select">Език на отговора</label>
             <select id="language-select">
-              <option>English</option>
-              <option>Bulgarian</option>
+              <option>Английски</option>
+              <option selected>Български</option>
             </select>
           </div>
         </div>
       </div>
 
       <div class="section">
-        <h2>4. Final Prompt</h2>
+        <h2>4. Финален промпт</h2>
         <textarea
           id="final-prompt"
           readonly
           rows="15"
-          placeholder="Your generated prompt will appear here..."
+          placeholder="Генерираният промпт ще се появи тук..."
         ></textarea>
-        <button id="copy-button">Copy to Clipboard</button>
+        <button id="copy-button">Копиране в клипборда</button>
         <span id="copy-feedback"></span>
       </div>
     </div>

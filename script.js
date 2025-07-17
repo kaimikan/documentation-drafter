@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("tone-select"),
     document.getElementById("length-select"),
     document.getElementById("format-select"),
-    document.getElementById("language-select"), // Changed from language-input
+    document.getElementById("language-select"),
   ];
 
   let presets = [];
@@ -34,7 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
       populatePresetDropdown();
     } catch (error) {
       console.error("Could not load presets:", error);
-      presetDescription.textContent = "Error: Could not load presets.json.";
+      presetDescription.textContent =
+        "Грешка: presets.json не можа да бъде зареден.";
     }
   }
 
@@ -55,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
    */
   function displayPreset(presetId) {
     currentPreset = presets.find((p) => p.id === presetId);
-    contextContainer.innerHTML = ""; // Clear previous fields
+    contextContainer.innerHTML = ""; // Изчистване на предишните полета
 
     if (!currentPreset) {
       presetDescription.textContent = "";
@@ -65,13 +66,56 @@ document.addEventListener("DOMContentLoaded", () => {
 
     presetDescription.textContent = currentPreset.description;
 
-    // Generate dynamic context fields
+    // Генериране на динамичните полета за контекст
     currentPreset.contextFields.forEach((field) => {
       const fieldContainer = document.createElement("div");
+
+      const labelWrapper = document.createElement("div");
+      labelWrapper.className = "label-wrapper";
 
       const label = document.createElement("label");
       label.setAttribute("for", field.name);
       label.textContent = field.label;
+      labelWrapper.appendChild(label);
+
+      // Добавяне на икона за помощ, само ако има placeholder
+      if (field.placeholder) {
+        const tooltipContainer = document.createElement("div");
+        tooltipContainer.className = "tooltip-container";
+
+        const helperIcon = document.createElement("span");
+        helperIcon.className = "helper-icon";
+        helperIcon.textContent = "ℹ️";
+        tooltipContainer.appendChild(helperIcon);
+
+        const tooltipText = document.createElement("span");
+        tooltipText.className = "tooltip-text";
+        tooltipText.textContent = field.placeholder;
+        tooltipContainer.appendChild(tooltipText);
+
+        // Добавяне на event listener за копиране при клик
+        tooltipContainer.addEventListener("click", (e) => {
+          e.stopPropagation(); // Спираме event-a, за да не се задействат други
+          navigator.clipboard
+            .writeText(field.placeholder)
+            .then(() => {
+              const originalText = tooltipText.textContent;
+              tooltipText.textContent = "Копирано!";
+              tooltipContainer.classList.add("copied");
+              setTimeout(() => {
+                tooltipText.textContent = originalText;
+                tooltipContainer.classList.remove("copied");
+              }, 1500);
+            })
+            .catch((err) => {
+              console.error("Неуспешно копиране на placeholder: ", err);
+            });
+        });
+
+        labelWrapper.appendChild(tooltipContainer);
+      }
+
+      fieldContainer.appendChild(labelWrapper);
 
       let input;
       if (field.type === "textarea") {
@@ -85,9 +129,8 @@ document.addEventListener("DOMContentLoaded", () => {
       input.id = field.name;
       input.name = field.name;
       input.placeholder = field.placeholder || "";
-      input.addEventListener("input", updateFinalPrompt); // Update prompt on typing
+      input.addEventListener("input", updateFinalPrompt);
 
-      fieldContainer.appendChild(label);
       fieldContainer.appendChild(input);
       contextContainer.appendChild(fieldContainer);
     });
@@ -142,14 +185,14 @@ document.addEventListener("DOMContentLoaded", () => {
     navigator.clipboard
       .writeText(finalPromptTextarea.value)
       .then(() => {
-        copyFeedback.textContent = "Copied!";
+        copyFeedback.textContent = "Копирано!";
         setTimeout(() => {
           copyFeedback.textContent = "";
         }, 2000);
       })
       .catch((err) => {
         console.error("Failed to copy text: ", err);
-        copyFeedback.textContent = "Failed to copy.";
+        copyFeedback.textContent = "Неуспешно копиране.";
       });
   }
 
